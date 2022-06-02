@@ -189,30 +189,3 @@ Mockito.when(employeeRepository.findByName(name))
 
 
 
-
-
-
-1- Seive of esrasthones
-2- spriral traversal matric
-3- Seconfd largest element in array 
-4- Train platform
-5- permutaion of string
-6- BFS
-7- DFS
-8- find nodes at any level of tree
-9- lcm
-10 hcf
-
-
-
-
-
-
-
-
-
-
-
-
-
-
