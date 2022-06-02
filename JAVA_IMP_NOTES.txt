@@ -52,8 +52,6 @@
 
 --> final makes variable immutable, finally is executed anyhow after try catch even after return in catch, finalize is used for garbage coolection(System.gc)
 
--> Microservies Architecture
-
 -> Handeling exception in generic way in spring boot
 
 --> Executor service
@@ -63,8 +61,6 @@
 
 --> @Service, @Component, @ Repository
 
---> Unitest cases,Mockito    
-    
 --> @ManyToOne
     @JoinColumn(name="dashboard_client_id",nullable = false)
     private DashboardClientMasterModel dashboardClientMasterModel;
@@ -139,37 +135,23 @@ public static class FirstManager {
         this.myService = myService;
     }
 
-    @PostConstruct
-    public void startWork() {
-        System.out.println("firstManager start work");
-        myService.doWork();
-    }
-
 }
 
 @Component
 public static class SecondManager {
 
-    private final List<MyService> myServices;
+    private final MyService myServices;
 
     @Autowired // inject MyService all implementations
-    public SecondManager(List<MyService> myServices) {
+    public SecondManager(@Qualifier("secondService)MyService myService) {
         this.myServices = myServices;
     }
 
-    @PostConstruct
-    public void startWork() {
-        System.out.println("secondManager start work");
-        myServices.forEach(MyService::doWork);
-    }
-
 }
 
 }
 
-
-
-
+--> Unitest cases,Mockito   
 UNIT TESting
 ------------
 String name="hi";
