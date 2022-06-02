@@ -1,0 +1,218 @@
+--> ABSTRACT
+  1- Abstract Methods must be overridden.
+  2- Abstarct methods can not be static as static methods can not be overridden.
+  3- Abstarct methods can not be final as final methods can not be overridden.
+  4- Abstract class can not be instatiated but can be inherited.
+  5- Abstarct Methods can only be defined in Abstract class.
+  6- Interface can have default and static methods also but Abstract class can not.
+ 
+--> Final
+  1- It makes a class Imuutable
+  2- Final Methods and class can not be Overridden and Inherited respectively
+  3- Final Methods and Variable can be static
+  4- It can not have setters 
+  4- Maps can not be Imumutable
+  
+--> Static
+ 1- A class can not be static unless it is Innner class or Nested class
+ 2- Static Methods can be final but not abstract.
+ 
+--> contructor autowiring is preferred over @Autowire annotation to maintain robustness
+
+--> for stroring password char[] is used in place of string because we can perform sanity on char [] but string is imuutable so if change the content of string then also pass word remains some where in memory
+ 
+--> JVM ,JDK,JRE
+  JDK - Are tools for for develoment
+  JRE- Eneviroment for running java applications
+  JVM - Interprets the code  and run un jre
+
+--> == check the object memory pointed but .equals() checks if the value of 2 objects are equal or not
+
+--> stack memory stores the variables and method execution where as heap memory is ued in du=ynamic memory allocation like if there is memory needed in between eexecution.
+
+--> method overloading is compile time polymorphism and method overiding is copile time polymorphism
+
+--> check exception: check in comile time like file not found in file handeling
+    unchecked exception: checked during runtime like divinf number by zero
+
+
+--> synchronization in java
+    1- Mutual exclusive
+       1- Method(Synchronized method)
+       2- Block(like in redemption flow )
+       3- static synchronization like as i did in printing odd even numbers in thread wise
+    2- Cooperation Thread Communication
+
+--> Hashmap vs hash table, internal working of hashmap
+   1-Hashmap accepts one null key and multiple nullvalue and is not thread safe, where as hash table does not accepts null value or key and thread safe
+   2- Final map can be changes as map points to a memory and we can add or remove more elements.
+   3- concurrentHashMap are thread safe
+
+--> String builder is more efficient and not thread safe but String buffer is less efficient and thread safe  
+
+--> final makes variable immutable, finally is executed anyhow after try catch even after return in catch, finalize is used for garbage coolection(System.gc)
+
+-> Microservies Architecture
+
+-> Handeling exception in generic way in spring boot
+
+--> Executor service
+    1- Executor services use blocking queue which is thread safe.
+
+--> hande multiple threads in apis: https://www.youtube.com/watch?v=oDw_LHxFTeo
+
+--> @Service, @Component, @ Repository
+
+--> Unitest cases,Mockito    
+    
+--> @ManyToOne
+    @JoinColumn(name="dashboard_client_id",nullable = false)
+    private DashboardClientMasterModel dashboardClientMasterModel;
+--> @ManyToMany
+    @JoinTable(name = "dealer_details_group_mapping", joinColumns = @JoinColumn(name = "dealer_id"), 
+    inverseJoinColumns =@JoinColumn(name = "group_id"))
+    private List<DashboardClientDealerGroupModel> dashboardClientDealerGroupModels;
+
+ --> InnoDB has row-level locking. MyISAM only has full table-level locking
+
+--> @Controller annotation indicates that the class is a “controller” like a web controller.
+    @RestController annotation indicates that class is a controller where
+    @RequestMapping methods assume @ResponseBody semantics by default.
+    In @Controller, we need to use @ResponseBody on every handler method
+
+-->  public Predicate toPredicate(Root<PromocodeMasterModel> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                if(fromDate==null && toDate==null){
+                    return cb.isTrue(cb.literal(true)); // always true = no filtering
+                }
+                query.orderBy(cb.asc(root.get("updateTimestamp")));
+                if(fromDate==null && toDate!=null){
+                    return cb.lessThanOrEqualTo(root.get("useDateTime"),toDate);
+                }
+                if(fromDate!=null && toDate==null){
+                    return cb.greaterThanOrEqualTo(root.get("useDateTime"),fromDate);
+                }
+                if(fromDate!=null && toDate!=null && fromDate.before(toDate)){
+                    return cb.between(root.get("useDateTime"),fromDate,toDate);
+                }
+                return cb.isTrue(cb.literal(true)); // always true = no filtering
+}
+
+
+
+
+ 
+public interface MyService {
+
+    void doWork();
+
+}
+
+@Service
+@Qualifier("firstService")
+public static class FirstServiceImpl implements MyService {
+
+    @Override
+    public void doWork() {
+        System.out.println("firstService work");
+    }
+
+}
+
+@Service
+@Qualifier("secondService")
+public static class SecondServiceImpl implements MyService {
+
+    @Override
+    public void doWork() {
+        System.out.println("secondService work");
+    }
+
+}
+
+@Component
+public static class FirstManager {
+
+    private final MyService myService;
+
+    @Autowired // inject FirstServiceImpl
+    public FirstManager(@Qualifier("firstService") MyService myService) {
+        this.myService = myService;
+    }
+
+    @PostConstruct
+    public void startWork() {
+        System.out.println("firstManager start work");
+        myService.doWork();
+    }
+
+}
+
+@Component
+public static class SecondManager {
+
+    private final List<MyService> myServices;
+
+    @Autowired // inject MyService all implementations
+    public SecondManager(List<MyService> myServices) {
+        this.myServices = myServices;
+    }
+
+    @PostConstruct
+    public void startWork() {
+        System.out.println("secondManager start work");
+        myServices.forEach(MyService::doWork);
+    }
+
+}
+
+}
+
+
+
+
+UNIT TESting
+------------
+String name="hi";
+Alex alex=new Alex(name);
+Mockito.when(employeeRepository.findByName(name))
+      .thenReturn(alex);
+ assertThat(name).equals(alex.getName)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1- Seive of esrasthones
+2- spriral traversal matric
+3- Seconfd largest element in array 
+4- Train platform
+5- permutaion of string
+6- BFS
+7- DFS
+8- find nodes at any level of tree
+9- lcm
+10 hcf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
