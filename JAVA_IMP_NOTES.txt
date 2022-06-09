@@ -98,7 +98,8 @@
 }
 
 
-
+-> Lifecycle of threads in java
+-> Jpa vs Hibernate
 
  
 public interface MyService {
