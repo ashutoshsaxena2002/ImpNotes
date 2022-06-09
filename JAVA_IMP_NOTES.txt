@@ -75,6 +75,10 @@
     @RestController annotation indicates that class is a controller where
     @RequestMapping methods assume @ResponseBody semantics by default.
     In @Controller, we need to use @ResponseBody on every handler method
+    
+   
+ --> In function overiding we can not overide public function from superclass  to private function in subclass
+ 
 
 -->  public Predicate toPredicate(Root<PromocodeMasterModel> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 if(fromDate==null && toDate==null){
