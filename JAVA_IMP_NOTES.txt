@@ -101,6 +101,22 @@
 -> Lifecycle of threads in java
 -> Jpa vs Hibernate
 
+-> serialization is used to convert object to bytesteam and deserialixation is viceversa.
+  Student s1 =new Student(211,"ravi");                                                 
+  FileOutputStream fout=new FileOutputStream("f.txt");    
+  ObjectOutputStream out=new ObjectOutputStream(fout);    
+  out.writeObject(s1);    
+  out.flush();   
+  
+  ObjectInputStream in=new ObjectInputStream(new FileInputStream("f.txt"));  
+  Student s=(Student)in.readObject();  
+  //printing the data of the serialized object  
+  System.out.println(s.id+" "+s.name);  
+
+-> @Transient is used to prevent the a filed in objet to get serialized
+ 
+-> In function overiding return type can be different. 
+ 
  
 public interface MyService {
 
