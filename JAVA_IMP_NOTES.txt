@@ -1,10 +1,18 @@
 --> ABSTRACT
   1- Abstract Methods must be overridden.
   2- Abstarct methods can not be static as static methods can not be overridden.
-  3- Abstarct methods can not be final as final methods can not be overridden.
-  4- Abstract class can not be instatiated but can be inherited.
-  5- Abstarct Methods can only be defined in Abstract class.
-  6- Interface can have default and static methods also but Abstract class can not.
+  3- Abstract class can have normal static methods
+  4- Abstarct methods can not be final as final methods can not be overridden.
+  5- Abstract class can not be instatiated but can be inherited.
+  6- Abstarct Methods can only be defined in Abstract class.
+  7- Interface can have default and static methods also but Abstract class can not.
+  8- Abstract class can have constructor
+  9- we can overide abstract method as anonoymous functions also
+  10- Abstract class can also be access if we create a anonymous function if we do not want to extend it to class
+
+--> INTERFACES
+  1- They can have default and static methods with their definition
+  2- Interface methods can also be defined with anonymous function concept , if we do not want to implement it to class.
  
 --> Final
   1- It makes a class Imuutable
