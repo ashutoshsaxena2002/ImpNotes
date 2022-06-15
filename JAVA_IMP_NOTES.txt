@@ -190,6 +190,15 @@ Mockito.when(employeeRepository.findByName(name))
  assertThat(name).equals(alex.getName)
 
 
+THREAD LIFECYCLE
+------------------
+
+        |---------1- NewBorn State ( thread has been created but not running, when we create object  of thread)
+        |      |-<>2- Runable State (When we call t1.start method, but still not running , but ready to run, available in queue to get executed)
+t1.stop |      |-<>3- Running state
+        |         4- Blocked State (when we use sleep,wait suspend state,and  thread can be made runnable by notify and resume method
+        |-------->5- Dead State(when we call t1.stop())
+
 
 
 
