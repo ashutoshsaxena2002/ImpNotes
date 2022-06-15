@@ -20,6 +20,8 @@
   3- Final Methods and Variable can be static
   4- It can not have setters 
   4- Maps can not be Imumutable
+
+--> . In Java, all non-static methods are by default "virtual functions." Only methods marked with the keyword final, which cannot be overridden, along with private methods, which are not inherited, are non-virtual
   
 --> Static
  1- A class can not be static unless it is Innner class or Nested class
