@@ -29,7 +29,7 @@
  ----------------
  1- Staic means the memory for that variable and method is created only once in enitre program and that the field can  be accessed 
  with classname and directly if accessed in same class in which it is declared and with object also.
- 2- Final makes the field imuttable i.e non changeable, non-inheritable.
+ 2- Final makes the field imuttable i.e non changeable, and class non-inheritable.
  3- A class can not be static unless it is Innner class or Nested class
  4- Static Methods can be final but not abstract.
  5- In static methods we can use static variables only.
@@ -64,9 +64,9 @@ List<Integer> integers= Arrays.asList(1,2,3,4,5,6,7,8,9);
 
 --> == check the object memory pointed but .equals() checks if the value of 2 objects are equal or not
 
---> stack memory stores the variables and method execution where as heap memory is ued in du=ynamic memory allocation like if there is memory needed in between eexecution.
+--> stack memory stores the variables and method execution where as heap memory is ued in duynamic memory allocation like if there is memory needed in between eexecution.
 
---> method overloading is compile time polymorphism and method overiding is copile time polymorphism
+--> method overloading is compile time polymorphism and method overiding is runtime polymorphism
 
 --> check exception: check in comile time like file not found in file handeling
     unchecked exception: checked during runtime like divinf number by zero
