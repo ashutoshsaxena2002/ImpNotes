@@ -27,11 +27,12 @@
  
  STATIC AND FINAL
  ----------------
- 1- Staic means the memory for that variable and method is created only once in enitre program and that the field can only be accessed 
- with classname or directly if accessed in same class inw which it is decalred and not with object.
+ 1- Staic means the memory for that variable and method is created only once in enitre program and that the field can  be accessed 
+ with classname and directly if accessed in same class in which it is declared and with object also.
  2- Final makes the field imuttable i.e non changeable, non-inheritable.
  3- A class can not be static unless it is Innner class or Nested class
  4- Static Methods can be final but not abstract.
+ 5- In static methods we can use static variables only.
  
 --> Final
   1- It makes a class Imuutable
