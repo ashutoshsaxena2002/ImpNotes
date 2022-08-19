@@ -27,9 +27,11 @@
  
  STATIC AND FINAL
  ----------------
- 1- Staic means the memory for that variable and method is created only once in enitre program and that the field can only be accessed with classname or     directly if accessed in same class inw which it is decalred and not with object.
+ 1- Staic means the memory for that variable and method is created only once in enitre program and that the field can only be accessed 
+ with classname or directly if accessed in same class inw which it is decalred and not with object.
  2- Final makes the field imuttable i.e non changeable, non-inheritable.
- 
+ 3- A class can not be static unless it is Innner class or Nested class
+ 4- Static Methods can be final but not abstract.
  
 --> Final
   1- It makes a class Imuutable
@@ -41,10 +43,6 @@
 
 --> . In Java, all non-static methods are by default "virtual functions." Only methods marked with the keyword final, which cannot be overridden, along with private methods, which are not inherited, are non-virtual
   
---> Static
- 1- A class can not be static unless it is Innner class or Nested class
- 2- Static Methods can be final but not abstract.
- 
 --> contructor autowiring is preferred over @Autowire annotation to maintain robustness
 
 --> for stroring password char[] is used in place of string because we can perform sanity on char [] but string is imuutable so if change the content of string then also pass word remains some where in memory
