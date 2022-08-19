@@ -41,6 +41,15 @@
   4- It can not have setters 
   5- Maps can not be Imumutable
   6- Make Deep copy of  objects
+  
+---> Consumer is functional Interface which accept one arguement and gives result. It hs 2 functions: .accept(), .andThen()
+---> Supplier is functional Interface which does not accept any arguement and gives result. It hs 1 functions: .get()
+---> Reducer,Stream,Filter,Predicate,Supplier EXAMPLE:
+List<Integer> integers= Arrays.asList(1,2,3,4,5,6,7,8,9);
+        Predicate<Integer> evenFilter=e->e%2==0;
+        Supplier<Integer> x=()->integers.stream().filter(evenFilter).reduce(0,(a1, a2) ->a1+a2);
+        System.out.println(x.get());
+    
 
 --> . In Java, all non-static methods are by default "virtual functions." Only methods marked with the keyword final, which cannot be overridden, along with private methods, which are not inherited, are non-virtual
   
@@ -71,7 +80,7 @@
     2- Cooperation Thread Communication
 
 --> Hashmap vs hash table, internal working of hashmap
-   1-Hashmap accepts one null key and multiple nullvalue and is not thread safe, where as hash table does not accepts null value or key and thread safe
+   1-Hashmap accepts one null key and multiple null value and is not thread safe, where as hash table does not accepts null value or key and thread safe
    2- Final map can be changes as map points to a memory and we can add or remove more elements.
    3- concurrentHashMap are thread safe
 
@@ -79,12 +88,18 @@
 
 --> final makes variable immutable, finally is executed anyhow after try catch even after return in catch, finalize is used for garbage coolection(System.gc)
 
--> Handeling exception in generic way in spring boot
+--> Handeling exception in generic way in spring boot
+@ControllerAdvice
+public class ExceptionHandling {
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<Object> getCustomExceptionMessage(CustomException customException){
+        return new ResponseEntity<>(customException.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+}
+
 
 --> Executor service
     1- Executor services use blocking queue which is thread safe.
-
---> hande multiple threads in apis: https://www.youtube.com/watch?v=oDw_LHxFTeo
 
 --> @Service, @Component, @ Repository
 
@@ -213,18 +228,7 @@ THREAD LIFECYCLE
 ------------------
 
         |---------1- NewBorn State ( thread has been created but not running, when we create object  of thread)
-        |      |-<>2- Runable State (When we call t1.start method, but still not running , but ready to run, available in queue to get executed)
-t1.stop |      |-<>3- Running state
+        |     |-<>2- Runable State (When we call t1.start method, but still not running , but ready to run, available in queue to get executed)
+t1.stop |     |-<>3- Running state
         |         4- Blocked State (when we use sleep,wait suspend state,and  thread can be made runnable by notify and resume method
         |-------->5- Dead State(when we call t1.stop())
-
-
-
-
-
-
-
-
-
-
-
