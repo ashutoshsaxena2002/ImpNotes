@@ -40,7 +40,7 @@
   3- Final Methods and Variable can be static
   4- It can not have setters 
   5- Maps can not be Imumutable
-  6- Make Deep copy of  objects
+  6- Make Deep copy of  objects in contructor of final class
   
 ---> Consumer is functional Interface which accept one arguement and gives result. It hs 2 functions: .accept(), .andThen()
 ---> Supplier is functional Interface which does not accept any arguement and gives result. It hs 1 functions: .get()
