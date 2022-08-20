@@ -16,3 +16,8 @@ Setting and Runinng the React JS Project
             npm start
             
 -> The React server will start on port configured in '.env' file.
+
+-> In Arrow function the arguemnt of functions can not be known
+-> In arrow function we can not define contructor
+-> arrow function does have their own state unlike normal function
+-> implicit calling is possible in arrow function
