@@ -44,3 +44,9 @@ useEffect(()=>{
 Hooks Syntax
 ------------
 const [data,setData]=useState(props.data.field1);
+
+const vs var vs let
+-------------------
+var- functional Scope, no intialization, update and re-declared
+let- block scope,no intialization, can be updated , can not be re-declared
+const- Global, intialization required,can not update of re-declared
