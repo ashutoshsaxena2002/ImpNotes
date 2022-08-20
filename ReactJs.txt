@@ -17,7 +17,30 @@ Setting and Runinng the React JS Project
             
 -> The React server will start on port configured in '.env' file.
 
+Arrow function vs Normal Function
+----------------------------------
 -> In Arrow function the arguemnt of functions can not be known
 -> In arrow function we can not define contructor
 -> arrow function does have their own state unlike normal function
 -> implicit calling is possible in arrow function
+const var=()=>{
+  /* syntax of arrow  function*/
+}
+
+React Fragments
+---------------
+It is used to prevent the use of normal <div> tag in outer most component in react project.
+This works but it gives some warning messages in some cases like if we use <td> tag of table as <td> tag can not be 
+the child of <div> tag, so we use react Fragments
+
+UseEffect
+---------
+userEffect is use to update the component on upadtion on hooks of component.
+useEffect(()=>{
+  /*syntax of hooks*/
+  callFunction();
+},data)
+
+Hooks Syntax
+------------
+const [data,setData]=useState(props.data.field1);
