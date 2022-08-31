@@ -166,8 +166,7 @@ public interface MyService {
 
 }
 
-@Service
-@Qualifier("firstService")
+@Service("firstService")
 public static class FirstServiceImpl implements MyService {
 
     @Override
@@ -177,8 +176,7 @@ public static class FirstServiceImpl implements MyService {
 
 }
 
-@Service
-@Qualifier("secondService")
+@Service("secondService")
 public static class SecondServiceImpl implements MyService {
 
     @Override
@@ -191,26 +189,18 @@ public static class SecondServiceImpl implements MyService {
 @Component
 public static class FirstManager {
 
-    private final MyService myService;
-
     @Autowired // inject FirstServiceImpl
-    public FirstManager(@Qualifier("firstService") MyService myService) {
-        this.myService = myService;
-    }
+    @Qualifier("firstService") 
+    private MyService myService;
 
 }
 
 @Component
 public static class SecondManager {
 
-    private final MyService myServices;
-
-    @Autowired // inject MyService all implementations
-    public SecondManager(@Qualifier("secondService)MyService myService) {
-        this.myServices = myServices;
-    }
-
-}
+    @Autowired // inject FirstServiceImpl
+    @Qualifier("secondService") 
+    private MyService myService;
 
 }
 
