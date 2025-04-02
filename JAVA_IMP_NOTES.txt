@@ -228,4 +228,5 @@ t1.stop |     |-<>3- Running state
 2- Checked and unchecked execpetion
 3- How final class is immutable with example of class
 4- Microservice architecture
+5- Functional interface and lamda expresssion
 
