@@ -222,3 +222,10 @@ THREAD LIFECYCLE
 t1.stop |     |-<>3- Running state
         |         4- Blocked State (when we use sleep,wait suspend state,and  thread can be made runnable by notify and resume method
         |-------->5- Dead State(when we call t1.stop())
+
+
+1- Multiple public static void main
+2- Checked and unchecked execpetion
+3- How final class is immutable with example of class
+4- Microservice architecture
+
