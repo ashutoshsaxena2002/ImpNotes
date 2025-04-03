@@ -86,6 +86,16 @@ List<Integer> integers= Arrays.asList(1,2,3,4,5,6,7,8,9);
 
 --> String builder is more efficient and not thread safe but String buffer is less efficient and thread safe  
 
+/ String (immutable)
+String s = "Hello";
+s += " World"; // Creates a new String object
+// StringBuilder (mutable, not thread-safe)
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World"); // Modifies the same object
+// StringBuffer (mutable, thread-safe)
+StringBuffer sbf = new StringBuffer("Hello");
+sbf.append(" World"); // Thread-safe modification
+
 --> final makes variable immutable, finally is executed anyhow after try catch even after return in catch, finalize is used for garbage coolection(System.gc)
 
 --> Handeling exception in generic way in spring boot
