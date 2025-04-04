@@ -241,3 +241,49 @@ t1.stop |     |-<>3- Running state
 5- Functional interface and lamda expresssion
 6- throws vs throw in exception handeling
 
+Sure! Here are a few advanced Java questions for a senior software engineer:
+
+Concurrency and Multithreading:
+
+How does the volatile keyword work in Java? Can you give an example of when you would use it over synchronized or Lock?
+
+Explain the concept of a thread pool and the advantages of using it. How would you implement a custom thread pool in Java?
+
+JVM and Performance:
+
+Describe the garbage collection process in Java. What are the different garbage collectors available, and how do you choose the right one for your application?
+
+How would you diagnose a memory leak in a Java application running in production?
+
+Design Patterns:
+
+Can you explain the Singleton design pattern and its thread-safety implications in Java? How would you implement it in a multi-threaded environment?
+
+How does the Factory Method pattern differ from Abstract Factory in Java? Can you give examples where each would be useful?
+
+Java 8 and Beyond:
+
+What are the main differences between Optional and null in Java, and when would you use one over the other?
+
+Explain how Streams work in Java 8. Can you give an example where a stream would be inefficient, and how would you address that?
+
+Java Memory Model:
+
+What is the difference between == and .equals() in Java? How does this relate to the Java memory model and object identity?
+
+What are happens-before and happens-after relationships in the Java Memory Model?
+
+Reflection and Dynamic Proxies:
+
+How does Java Reflection work, and what are some performance implications of using it?
+
+What is a dynamic proxy in Java, and how would you create one programmatically?
+
+Design and Architecture:
+
+Can you walk through the process of designing a highly scalable microservices architecture using Java? How would you ensure fault tolerance and high availability?
+
+How would you handle distributed transactions in a Java-based microservices architecture?
+
+Let me know if you need clarification or more specific questions!
+
