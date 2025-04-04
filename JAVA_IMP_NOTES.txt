@@ -13,7 +13,7 @@
   
 
 --> INTERFACES
-  1- All the varibles in interface are by default final and static.
+  1- All the varibles in interface are by default final and static as interafce can not be instantiated on its own.
   2- interface can have default and static methods with their definition
   3- No Methods can be final in interface.
   4- Interface methods can also be defined with anonymous function concept , if we do not want to implement it to class.
