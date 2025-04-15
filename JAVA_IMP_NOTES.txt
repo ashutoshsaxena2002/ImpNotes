@@ -287,3 +287,6 @@ How would you handle distributed transactions in a Java-based microservices arch
 
 Let me know if you need clarification or more specific questions!
 
+-> DO retrun type matters in function overloading
+-> Collision in HAspMAp in java
+
