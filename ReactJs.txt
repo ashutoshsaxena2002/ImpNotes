@@ -50,3 +50,29 @@ const vs var vs let
 var- functional Scope, no intialization, update and re-declared
 let- block scope,no intialization, can be updated , can not be re-declared
 const- Global, intialization required,can not update of re-declared
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+JS ES6 FEATURE
+---------------
+1- let and const
+2- arrow function
+3- default parameter in function
+4- Destructuring Assignments
+
+Design Pattern in React
+------------------------
+
+1- Presentational and Container Component: Implememt heavy logic component seperately as Container component and render on Presentational component on UI
+2- Custom Hook Pattern: Extract Reusuable logic in seperate hook file
+
+3- Controlled and Uncontrolled components:
+Controlled : When Parent component decides the state
+Uncontrolled: When component manages the state itself
+4- Compound Component: useContext
+A CDN (Content Delivery Network) is a network of geographically distributed servers that work together to deliver web content quickly and reliably to users, based on their location.
+Netlify
+Vercel
+Firebase Hosting
+SSR (Server-Side Rendering) in React refers to the process of rendering React components on the server and sending a fully rendered HTML page to the client (browser).
