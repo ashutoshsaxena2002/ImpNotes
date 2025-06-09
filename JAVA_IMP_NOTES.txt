@@ -241,6 +241,53 @@ t1.stop |     |-<>3- Running state
 5- Functional interface and lamda expresssion
 6- throws vs throw in exception handeling
 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Versioning in Spring boot API
+------------------------------
+-> we need versioning in api to manage and update api without disrupting the existing clients
+-> evolve the api
+1- URI Path Versioning: @Getmapping("/api/v1/person")
+2- Query Parameters Versioning:@Getmapping(path = "/api/person", params = "version=1")
+3- Custom Header Versioning:@Getmapping(path = "/api/person", headers = "X-API-VERSION=1")
+4- Content Negotiation Versioning: @Getmapping(path = "/api/person", produces = "application/vnd.company.app-v1+json")
+
+Monolithic and MicroService Architecture
+-----------------------------------------
+
+Monolithic: Entire software is constructed in Single unit with single database.
+Best in
+-> Small application
+-> Application requiring Limited development
+-> Frequent changes not expected
+-> Low operational Complexity
+
+MicroService: software is broken down in to small and independent units each having their own database so that the change in
+one microservice does not effect other microservice.
+Best in softwares like
+-> With rapid development
+-> Require High scalibility
+-> Leverageing different technology
+-> Dynamically evvolving software
+
+Microservices communicate in either of 2 ways below
+-> Asynchronous Communication throught Messaging queue like KAFKA
+-> Synchronous Communication Throught Http Rest Api call
+
+MircroService Registry is a central component where we keep the track of all microservices running. Most common tool for this in spring boot is eureka
+Fot this we need 2 component
+1- Eureka Server : Server where microservice will register
+2- Eureka Client: It is microservice which will register itself in eureka Server @EnableEurekaServer
+
+Data join in microservices
+--------------------------
+1- Api composition: We have one aggregator service which call multiple microservices merges the data and send to client
+2- Database-per-service + Asynchronous Data Replication: Microservices publish a event in kakfa queue and other microservice consumes that data to store data locally
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 Sure! Here are a few advanced Java questions for a senior software engineer:
 
 Concurrency and Multithreading:
