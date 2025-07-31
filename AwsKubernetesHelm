@@ -1,0 +1,152 @@
+---> Install AWS CLI FROM :  https://awscli.amazonaws.com/AWSCLIV2.msi
+
+---> Create the CLI USER ON AWS:
+
+CURRENT USER:
+ACCESS KEY: AKIAQHYTDV3TTA2LBIQP
+SECRET ACCESS KEY: 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
+ACCOUNT ID: 016683085543
+
+NOTE: THE ABOVE USER IS CREATED SO THAT WE CAN MANAGE AND RUN ALL AWS COMMAND AND CONSOLE FROM OUR PC AWS CLI. THERE IS ALSO THE OPTION TO RUN THE AWS COMMANDS AND CONSOLE FORM AWS POWERSHELL
+
+---> NOW WE NEED TO CONFIGURE OUR USER ON OUR PC AWS CLI with following command
+		>aws configure
+		>AWS Access Key ID [None]: <your-access-key-id>
+		>AWS Secret Access Key [None]: <your-secret-access-key>
+		>Default region name [None]: us-west-2
+		>Default output format [None]: json
+---> We can run below command to verify if our user has been configured on pc aws cli, we will get account info in output
+        >aws sts get-caller-identity
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+---> NOW WE NEED TO INSTALL "eksctl" package WHICH IS SPEIFIC TO AWS
+
+---> We will need eksctl package to create kubernetes cluster on AWS
+
+---> DOWNLOAD ZIP FILE NAMED:"eksctl_Windows_amd64.zip" from link: https://github.com/eksctl-io/eksctl/releases
+
+---> extract the zip file and paste the path of extracted file in system variables path just like we set path for java.
+
+---> We can verify if eksctl is installed on pc by following command
+        > eksctl version
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+---> NOW WE WILL NEED TO INSTALL "kubectl" package on pc. It is for kubernetes command not speific to aws.
+
+--> kubectl package is needed for running kubernetes command.
+
+---> DOWNLOAD kubectlc exe file from https://dl.k8s.io/release/v1.30.1/bin/windows/amd64/kubectl.exe
+
+
+---> Keep this kubectlc.exe file in desired folder and paste the path in system
+variable and verify if kubectl is installed by following command.
+       > kubectl version --client
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+---> NOW AWS CLI , eksctlc ,kubectc is configured, now we will create kubenetes cluster with eksctlc from from aws cli on pc
+
+ENABLE ODIC: >eksctl utils associate-iam-oidc-provider --region us-west-2 --cluster ashu20150cluster --approve
+
+COMAMND TO CREATE CLUSTER: >eksctl create cluster -f cluster.yaml
+
+Create node group: >eksctl create nodegroup  --cluster ashutosh20150cluster  --region us-west-2  --name ng-free-tier  --node-type t3.micro --nodes 2 --nodes-min 1 --nodes-max 3  --managed
+
+COMMAND TO CHECK IF CLUSTER IS CRAETED: >aws eks describe-cluster  --name ashutosh20150cluster  --region us-west-2  --query "cluster.status"
+
+COMMAND TO CHECK IF NODE GROUP IS CREATED: >aws eks describe-nodegroup --cluster-name ashutosh20150cluster --nodegroup-name ng-free-tier --region us-west-2 --query "nodegroup.status"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Now we need to point out local pc kubectl or aws console kubectl to our cluster created
+
+-- IT might be possible that the IAM CLI USER IS NOT CONFIGURED PROPERLY ON OUR LOCAL PC OR ON AWS CLOUD CONSOLE SO THE BELOW COMMAND WILL FAIL TO POINT CLUSTER, SO IN THAT CASE WE WILL FIRST NEED TO CONFIGURE IAM CLI USER WITH KEYS AND COMMANDS GIVEN ABOVE
+
+Command: >aws eks update-kubeconfig --region us-west-2 --name ashutosh20150cluster
+NOW CHECK RUNNING NODE WITH COMMAND: >kubectl get nodes
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+COMMAND FOR DEPLOYMENT
+----------------------
+
+CLUSTER: ENTIRE CONTROL PANEL FOR DEPLOYING APPLICATION
+NODES: WORKING MACHINES WHICH RUN YOUR APPLICATION
+PODS: INSTANCES OF APPLICATION
+CONTAINER: DOCKER STAND-ALONE APPLICATION
+ 
+
+> kubectl apply -f deployment.yaml (TO DEPLOY APPLICATION)
+> kubectl get deployment -o wide (TO CHECK IF APPLICATION IS DEPLOYED)
+> kubectl apply -f Service.yaml (TO EXPOSE APPLICATION)
+> kubectl get pods -o wide (TO CHECK THE RUNNING STATUS OF APPLICATION)
+> kubectl describe pod <pod-name>(GET DESCRIPTION OF POD)
+> kubectl logs <pod-name>(CHECK LOGS OF POD)
+> kubectl logs <pod-name> -c <container-name>(LOGS IN CASE OF MULTIPLE CONTAINER IN ONE POD)
+> kubectl delete pod <pod-name>(DELETE THE POD)
+> kubectl get nodes -o wide (TO GET THE RUNNING NODES)
+> kubectl get services -o wide (LIST DOWN ALL RUNNING SERVICES)
+
+NOTE: CLUSTER IP type service is user only for microservice or app which need to be called internally by any conatiner on pod and we do not want to expose externally
+
+--> 80 is default port so this not required in external ip, but for other 
+ports we will need to add them in url ,just like for microservice2
+
+UI POINTING TO 80 (DEFAULT PORT IN SEPERATE POD):http://af41144ffe99c45d6929057aa21a2c65-280013685.us-west-2.elb.amazonaws.com:3001/
+
+--> Microservice1 and Microserice2 are on same pod, multicontainer pod
+MICROSERVICE1 POINTING TO 80(default port): http://a1a921215d8ec4e22b5caf46ac90b6d7-1647125316.us-west-2.elb.amazonaws.com/getDataFromMicroservice1
+
+MICROSERVICE2 POINTING TO 82: http://a1a921215d8ec4e22b5caf46ac90b6d7-1647125316.us-west-2.elb.amazonaws.com:82/getDataFromMicroservice2
+
+-->Not quite — we cannot expose both microservices on port 80 on the same LoadBalancer service or on same pod, because port 80 can only be bound once per IP.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+NOTE: In Kubectl We have Deployment.yaml and Serice.yaml file , we do not need to deploy Service.yaml again and again as this will change the url of application, there is no issue in deploying service again but the url will change that might cause the cors issue.SO in case on any code change we can upadte the docker image name in Deployment.yaml file and deploy only that. 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Commands to create and configure git repo
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin <link of empty repo created on git hub where we want to push project>
+git push -u origin master
+
+
+CHECK GLOBAL USER FOR GIT:
+git config --global user.name "USER NAME"
+git config --global user.email "EMAIL"
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+HELM CHARTS
+___________
+
+1- Create a new project with helm
+Command: >helm create <Project to be Named>
+
+2- To deploy the application:
+Command:> helm install <ServiceName you want to give> <Root folder to helm project> -f <file name for values to be overridden eg: my-values.yaml>
+
+NOTE: If we do not give -f my-values.yaml then it will automatically picks the Values.yaml in root project folder.
+
+NOTE: helm will automatically point to the cluster where kubectl is pointed
+
+3- To undeploy application 
+Command:> helm uninstall <ServiceName we have give in above step> 
+
+4- To check the status of service
+Command:> helm status <ServiceName we have give in above steps>
+
+5- To list down all realeases of helm
+Command: >helm list
+
+6- > helm upgrade my-release ./my-chart -f my-values.yaml
+Upgrades (or installs) a Helm release using your custom values file.
+=>my-release: The name of the Helm release (instance).
+=>./my-chart: Path to the Helm chart you are upgrading.
+=>-f my-values.yaml: Overrides default values with values from this file.
+=> If the release doesn't exist yet, you can add --install to install it if needed:
+
+7- helm show values ./my-chart
+Displays the default values.yaml for a local chart.
+Use this to see all the values you can override in your custom my-values.yaml.
+
+8- > helm upgrade --dry-run --debug my-release ./my-chart -f my-values.yaml
+Simulates the upgrade without making any changes, and shows detailed debug output.
+=> --dry-run: Doesn’t actually apply changes to the cluster.
+=> --debug: Shows the rendered templates and values used.
+=> Use this to preview what Helm would do, which is great for testing your changes.
+
+
+IMP NOTES: We need to create seperate helm chart project for deployment and service yamls kubernetes file so that service is not deployed again and again as this would again and again change url, service will pick the new deployments depending on the app-name in deployment and service yaml file and will overide the deployment
