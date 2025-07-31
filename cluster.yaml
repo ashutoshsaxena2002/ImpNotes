@@ -1,0 +1,16 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ashutosh20150cluster
+  region: us-west-2
+
+nodeGroups:
+  - name: ng-free-tier
+    instanceType: t3.medium
+    desiredCapacity: 1
+    minSize: 1
+    maxSize: 2
+    volumeSize: 20
+    ssh:
+      allow: false # set true if you want SSH access to nodes
