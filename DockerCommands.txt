@@ -1,0 +1,51 @@
+TO SEE ALL IMAGES IN DOCKER: docker images
+BUILD DOCKER IMAGE specific to local PC enviroment:  docker build -t <imagename u want to give> . 
+BUILD DOCKER IMAGE as per Linux environment which run on cloud platform:  docker buildx build --platform linux/amd64 -t <imagename u want to give> . 
+
+TO DELETE IMAGE IN DOCKER: docker rmi <image_id>
+TO RUN A IMAGE IMAGE IN DOCKER: docker run -p <8080>:<8080> <IMAGE_NAME>
+TO RUN A IMAGE IN DOCKER BY GIVING CONTAINER NAME: docker run --name <container_name> -p 8082:8082 <image_name>
+
+
+TO SEE ALL CONTAINERS IN DOCKER: docker ps -a
+TO SEE ALL RUNNING CONTAINERS IN DOCKER: docker ps
+TO DELETE CONTAINER IN DOCKER: docker rm <container_id>
+TO STOP A CONGTAINER IN DOCKER: docker stop <container_name_or_id>
+
+TO BUILD A COMPOSE FILE: docker-compose -f <file_name.yml> build
+TO RUN A COMPOSE FILE: docker-compose -f <file_name.yml> up
+
+TO CEATE A NETWORK IN DOCKER: docker network create <network-name>
+TO GET NETWORK LIST: docker network ls
+TO DELETE NETWORK :docker network rm  <network-name>
+
+
+PUSHING DOCKER IMAGE ON DOCKER HUB
+__________________________________
+docker tag <IMAGE NAME ON LOCAL:TAG> <DOCKER USERNAME>/<IMAGE NAME TO BE GIVEN:TAG>
+docker login
+<GIVE USER NAME AND PASSWORD>
+docker push <DOCKER USERNAME>/<IMAGE NAME GIVEN ABOVE:TAG>
+
+
+if we want top build a seperate image of 1 microservice which is internally calling other microservive then we need both microservice to run on same network  by below command
+
+docker run -d --name <container_name_u_want_to_give> --network  <network_name> -p 8080:8080  <image_name>
+
+
+✅ Summary
+Config Type	                   Use args?	    Use environment?	      Why?
+
+DB URL, username, password	   ❌ No	        ✅ Yes	                  Needed at runtime, not during build
+
+API keys, feature flags	       ❌ No	        ✅ Yes	                 Spring reads them from environment
+
+React API URL (in build)	   ✅ Yes	        ❌ No (unless dev)	     Needed during frontend npm run build
+
+
+
+BUILD DOCKER IMAGE:  docker build -t <imagename u want to give> .
+TO RUN A IMAGE IMAGE IN DOCKER: docker run -p <8080>:<8080> <IMAGE_NAME>
+TO BUILD A COMPOSE FILE: docker-compose -f <file_name.yml> build
+TO RUN A COMPOSE FILE: docker-compose -f <file_name.yml> up
+
