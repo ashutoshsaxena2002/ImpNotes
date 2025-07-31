@@ -107,6 +107,12 @@ git config --global user.email "EMAIL"
 HELM CHARTS
 ___________
 
+Installing Helm
+-> download helm.exe file for windows
+-> set enviroment variable path for helm
+-> check if helm is installed with command: > helm version
+
+
 1- Create a new project with helm
 Command: >helm create <Project to be Named>
 
