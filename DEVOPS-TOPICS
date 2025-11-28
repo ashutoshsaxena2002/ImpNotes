@@ -1,0 +1,281 @@
+DEVOPS
+------
+Nginx
+VECTOR DB
+MVN And Gradle
+LRU CACHE VS REDIS
+
+LINUX Fundamentals
+  - CLI (BASH)
+  - Process and Permissions: ps,kill,chmod
+  - Package Management:apt, yum
+  - Text Editor :Vim
+  
+Networking And Security(WireShark:Tool for Analyzing and Trobleshooting Network and Network issues)
+  - OSI, TCP/IP Model
+  - Different Methods: Https, https, ssh
+  - IP Addressing, SubNetting, DNS
+  - Network Issues
+  - FireWall , Proxy servers
+  - Cahing Servers, LoadBalancers
+  - Circuit Breaker
+  
+Scripting(Groovy)
+  - For writting Jenkins file
+  - Automation Scripting for cron job
+
+
+
+Version Control
+  - Git 
+  - Merge vs rebase
+  - Resolving Conflicts
+  
+----------------------------------|
+Cloud (AWS): Threotically Possible|
+----------------------------------|
+
+Microservices and Containerization:
+  - Microservice Registry Eureka Discovery and Config Servers
+  - Kafka and Topics , Events in Java and Kafka
+  - Fiegn Client
+  - Health Checks and Actuator
+  - Caching (Reddis)
+  - Docker(For Containerization)
+
+CI/CD
+  - Jenkins OR GITHUB ACTIONS CI/CD , GitLAB CI
+
+Infrastructure As Code (IaC)
+  - Provisioning: Terraform
+  - Configuring : Ansible
+
+Orchestration And Management
+  - Kubernetes(Clusters, node, K8Cluster)
+  - Helm
+
+Monitoring And Logging
+  - Prometheus (For Logging and Monitoring application and gather data)
+  - Grafana (Visualize logging data on dashboard)
+  
+Service Mesh(For traffic Management in Microservice based project)
+  - Istio
+
+GitOps(Git Repo is treated as Single source of truth for managing and Automating operation)
+  - ArgoCD or FLUX  
+
+___________________________________________________________________________________________________________________________________________________________________________________
+
+System Design HLD AND LLD
+-------------------------
+Parking Lot
+Elevator System
+ATM System
+Food Delivery(Zomato)
+Social Media(Twitter, Intagram)
+Cab Booking(Uber)
+Video Streaming(Youtube)
+Upi Payments(PhonePay)
+Ticket Booking System(Book My Show)
+Notification System
+File Management System (DropBox)
+Messaging App(What' app)
+Email App (Gmail)
+Rate Limiter
+Job Scheduler / Cron system
+E-commerce System (Amazon)
+Video Conferencing (Microsoft Teams)
+Url Shortner(Bit.ly)
+Online Code Judge (LeetCode)
+Stock Trading System(Zerodha)
+Distributed Cache System (Redis)
+Search Engine(Google)
+Design Leaderboard (high throughput)
+
+IMPORTANT CONCEPTS AND QUESTION
+-------------------------------
+
+-> Scalability & Performance
+How to handle 100M users?
+How to scale a monolith to microservices?
+How to scale a DB vertically & horizontally?
+How to design for high availability (HA)?
+Explain throughput, latency, tail latency.
+How to handle a spike of 10x traffic?
+
+-> Database Design
+SQL vs NoSQL and Cassendra – when to choose what?
+How does sharding work in MongoDB?
+How do indexes actually work?
+How to design read-heavy vs write-heavy systems?
+
+-> Caching & CDNs
+Cache invalidation strategies
+Write through / write back cache
+CDN architecture
+
+-> Microservices
+Synchronous vs asynchronous communication
+Event-driven architecture
+API Gateway design
+Saga pattern for distributed transactions
+
+How does Kafka handle millions of events?
+How would you design a distributed lock system?
+How to design a fault-tolerant microservice?
+How does a database handle concurrency?
+How to design an API gateway?
+How to design a consistent distributed cache?
+How does gRPC compare to REST in scaled systems?
+Why do we need CQRS + Event Sourcing?
+How to handle data replication across regions?
+How to design a multi-tenant SaaS?
+How to design a session management system?
+What is load balancing?
+What is caching?
+What is CDN and how does it work?
+What is horizontal vs vertical scaling?
+Explain consistent hashing.
+What is a message queue?
+What is a proxy? Reverse proxy?
+Explain CAP theorem.
+What is sharding and replication?
+Explain eventual consistency vs strong consistency.
+What is a rate limiter?
+What is a circuit breaker?
+
+
+
+Things to be covered in LLD(Mostly Asked)
+-----------------------------------------
+Entities
+Services
+Functionality
+DB Design
+Api Exposed
+UML Diagram (Most Important)
+
+
+
+
+Things To be Covered In HLD
+---------------------------
+
+Scalability
+------------
+Vertical Scaling & Horizontal Scaling
+Load Balancing
+Caching Strategies
+Database Sharding
+Asynchronous Processing
+Message Queues and Event-Driven Architecture
+Content Delivery Networks ICDNal
+Microservices Architecture
+
+
+Caching
+-------
+Cache Types (In-memory, Distriuted Persistent) -
+Cache Eviction Policier LRU LFU. FIFO, Randomi -
+Cache invalidation Strategies -
+Wets Palices Write-through, Wite-back. Write-around) -
+Cache Partitioning and Sharding —
+Data Expiration and TTL. Management —
+Cache Warming Techniques —
+Handling Cache Stampede/Thundering Herd Probiem
+
+Messages And Events
+-------------------
+Publish-Subscribe (Pub/Sub) System
+Message Queues
+Event Sourcing
+Event-Driven Architecture (EDA)
+Stream Processing
+Message brokers (e.g. Kafka, RabbitMQ)
+Asynchronous Communication Patterns
+Message Partitioning and Sharding
+Dead Letter Queues and Error Handling 
+Idempotency in Messaging Systems
+
+Concurrency
+-----------
+Thread Pool & Thread Satety
+Race Condition:
+Deadlocks & Starvation
+Atomic Operation
+Locks & Semaphores
+Read Write Lock
+Memory Consistency models eg: Sequential Consistency
+Event driven concurrency Models (e.g. Actor Model)
+
+Consistency
+------------
+Strong Consistency
+Weak Consistency
+Eventual Consistency
+CAP Theorem Correction
+Read-Your-Writes Consistency
+Sequential Consistency
+
+Distributed Systems
+-------------------
+Data Partitioning and Sharding
+Consistency Models (Strong, Eventual Causal)
+Consensus Algorithms (Paxos, Raft)
+Distributed Transactions and Two- Phase Commit
+Fault Tolerance and Recovery Mechanism
+Leader Election Protocols
+Load Balancing
+Message Queues and Event Streaming (e.g. Kafka,
+Replication Techniques (Synchronous vs Asynchronous)
+Service Discovery and Registry Services
+Time Synchronization and Logical Clocks (Lamport Clocks, Vector Clocksl
+
+
+Api Design
+----------
+Restful API Design Principles
+GraphQL. AP: Design
+Authentication and Authorization in APis
+Rate Limiting and Throttling Techniques
+Error Handling and Response Codes
+Designing idempotent APis
+Pagination and Filtering Methods
+Security Best Practices for APis
+
+
+AI Systems
+-----------
+Retrieval-Augmented Generation (RAG) Techniques
+Context Engineering and Management
+Data ingestion and Preprocessing for Ai
+Knowledge Base Integration
+Query Understanding and Expansion
+Scalability and Performance Optimization in Ai Systems
+Model Training and Fine-tuning Strategies
+Real-time Inference Pipelines
+Monitoring, Logging, and Evaluation of Al Models
+___________________________________________________________________________________________________________________________________________________________________________________
+
+Java , Spring boot, DB
+----------------------
+
+Java memory model
+Singelton Class Thread safe
+Logging With Thread
+Memory Leaking
+Collisions in map
+Auto COnfigutaion , Bean Working , @SpringbootApplication annotaion
+Jpa vs Hibernate, internal working of hibernate
+Bean Scopes
+Spring Discovery, Feign Client, Config Serever, Eureka, actuators, Health Checks
+Polymorphism
+Abstraction with example in java
+Scopes: Private, Public , Protected
+static
+final
+Abstract
+Interface
+OPtimize Query in Sql
+Sql vs NoSql Cassendra
+HashMap vs HashTable
