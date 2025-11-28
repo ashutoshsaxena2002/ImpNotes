@@ -1,0 +1,61 @@
+SETTING JENKINS ON LOCAL:
+
+=>INSTALL JENKINS LTS FOR WINDOWS ON LOCAL PC FROM:    https://www.jenkins.io/download/
+=> While installing on Local , we will get below 2 options
+      -> USE LOCAL SYSTEM: FOR ENTIRE PC(WE CAN SELECT THIS)
+	  -> USE LOACL USER: IF YOUR LAPTOP HAS MANY PROFILES
+=> JENKINS WILL SUPPORT ONLY JAVA 17 or JAVA 21, so we will need those version jdk for that
+=> we do not need to set path for jenkins on local
+=> we can run below command to check if jenkins is installed.
+     > sc query jenkins
+=> we can now open jenkins terminal depending on the port configured while installation
+URL ON THIS PC: http://localhost:9000/login?from=%2F
+
+=> It will ask for initial password while hitting above url
+=> we will find the password here : C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword
+
+=> Jenkins by default creates the logs folder in:C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword
+
+=> if we want to change it:
+    > click windows+R
+	> type services.msc
+	> stop jenkins service
+	> copy all content from C:\ProgramData\Jenkins\
+	> paste it inside desired folder , in this pc i have pasted in=>"C:\Users\ashut\Desktop\Tools\Jenkins\jenkins_home\.jenkins"
+	
+	> open enviroment variable , create a new variable name "JENKINS_HOME": paste the path=> "C:\Users\ashut\Desktop\Tools\Jenkins\jenkins_home\.jenkins"
+	
+	> Now we need point jenkins service to above new path
+	> stop the service by command: > sc stop jenkins
+	
+	> point jenkins to the new path by command: > setx JENKINS_HOME "C:\Users\ashut\Desktop\Tools\Jenkins\jenkins_home\.jenkins" /M
+	
+NOW THE INSTALLION IS COMPLETE, BASIC JENKINS COMMANDS:
+
+> sc start jekins(Start jenkins)
+> sc stop jenkins (Stop jenkins)
+> sc query jenkins (checking status of jenkins service)
+
+
+
+# Update packages
+sudo yum update -y
+
+# Install Java (for Jenkins)
+sudo dnf install java-11-amazon-corretto -y
+
+# Installation of jenkins
+>sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+>sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+>sudo yum install jenkins -y
+
+# Start Jenkins
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+
+> sudo find / -name jenkins.war 2>/dev/null
+> java -jar /usr/share/java/jenkins.war
+>nohup java -jar /usr/share/java/jenkins.war &
+
+PATH OF JENKINS IN MY AWS: /usr/share/java/jenkins.war
+
