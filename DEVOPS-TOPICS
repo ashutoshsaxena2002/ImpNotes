@@ -96,6 +96,7 @@ IMPORTANT CONCEPTS AND QUESTION
 -------------------------------
 
 -> Scalability & Performance
+CDN : Content delivery network
 How to handle 100M users?
 How to scale a monolith to microservices?
 How to scale a DB vertically & horizontally?
@@ -279,3 +280,5 @@ Interface
 OPtimize Query in Sql
 Sql vs NoSql Cassendra
 HashMap vs HashTable
+handeling global exception in spring boot
+
