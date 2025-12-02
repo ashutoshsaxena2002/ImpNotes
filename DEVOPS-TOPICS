@@ -3,6 +3,10 @@ DEVOPS
 Nginx
 VECTOR DB
 Elastic seach or Solr
+Open Time Series Data base(OpenTSDB)
+Hadoop (Data ware house for storing very big data)
+Cassandra
+Mongodb
 MVN And Gradle
 LRU CACHE VS REDIS
 
