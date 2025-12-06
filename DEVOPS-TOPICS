@@ -1,5 +1,5 @@
-DEVOPS
-------
+DEVOPS- IMPLEMETAION 
+---------------------
 Nginx
 VECTOR DB
 Elastic seach or Solr
@@ -46,6 +46,7 @@ Microservices and Containerization:
   - Fiegn Client
   - Health Checks and Actuator
   - Caching (Reddis)
+  - Reddis Cluster for giving unique url as in url shortener design
   - Docker(For Containerization)
 
 CI/CD
