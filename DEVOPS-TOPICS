@@ -8,7 +8,8 @@ Hadoop (Data ware house for storing very big data)
 Cassandra
 Mongodb
 MVN And Gradle
-LRU CACHE VS REDIS
+
+CDN : Content delivery network
 
 LINUX Fundamentals
   - CLI (BASH)
@@ -45,7 +46,8 @@ Microservices and Containerization:
   - Kafka and Topics , Events in Java and Kafka
   - Fiegn Client
   - Health Checks and Actuator
-  - Caching (Reddis)
+  - Caching (Reddis) 
+  - Caching (LRU)
   - Reddis Cluster for giving unique url as in url shortener design
   - Docker(For Containerization)
 
@@ -103,6 +105,7 @@ IMPORTANT CONCEPTS AND QUESTION
 
 -> Scalability & Performance
 CDN : Content delivery network
+LRU CACHE VS REDIS
 How to handle 100M users?
 How to scale a monolith to microservices?
 How to scale a DB vertically & horizontally?
