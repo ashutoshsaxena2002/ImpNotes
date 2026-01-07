@@ -76,9 +76,11 @@ ________________________________________________________________________________
 
 System Design HLD AND LLD
 -------------------------
-Parking Lot
-Elevator System
-ATM System
+Parking Lot                              : DONE
+Elevator System                          : DONE
+ATM System                               : DONE
+AIR BNB OR OYO                           : DONE
+Url Shortner(Bit.ly)                     : DONE
 Food Delivery(Zomato)
 Social Media(Twitter, Intagram)
 Cab Booking(Uber)
@@ -93,13 +95,11 @@ Rate Limiter
 Job Scheduler / Cron system
 E-commerce System (Amazon)
 Video Conferencing (Microsoft Teams)
-Url Shortner(Bit.ly)
 Online Code Judge (LeetCode)
 Stock Trading System(Zerodha)
 Distributed Cache System (Redis)
 Search Engine(Google)
 Design Leaderboard (high throughput)
-AIR BNB OR OYO
 Google map
 
 
