@@ -1,25 +1,35 @@
+NGINX:
+------
+-> It is a web server which act as proxy server, load balancer between client and application
+-> We normally use it with kubernetes by configuring IngressController.yaml, Ingress.yaml
+-> IngressController.yaml file we define all the configuration specify the nginx docker image to be deployed as seperate pods in cluster
+-> Ingress.yaml file we define the firewall or proxy rule for the web request traffic or for path based routing
+
+eg: suppose we have
+https://example.com/api/Microservice1  : App1
+https://example.com/api/Microservice2  : App2
+https://example.com/api/Microservice3  : App3
+
+-> now there is UI(Client) which calls multiple backend services like App1, App2,App3, so we can make the configuation for diverting the traffic in resppective microservice in ingress.yaml file. 
+-> Normal Kuberntes Service can balance traffic between  it's running instances or pods but can divert traffic depending on the path of url so for that we need Nginx
+_____________________________________________________________________________________________________________________________________________________________________________________
+DOCKER:
+-------
+
 TO SEE ALL IMAGES IN DOCKER: docker images
-BUILD DOCKER IMAGE specific to local PC enviroment:  docker build -t <imagename u want to give> . 
 BUILD DOCKER IMAGE as per Linux environment which run on cloud platform:  docker buildx build --platform linux/amd64 -t <imagename u want to give> . 
-
 TO DELETE IMAGE IN DOCKER: docker rmi <image_id>
-TO RUN A IMAGE IMAGE IN DOCKER: docker run -p <8080>:<8080> <IMAGE_NAME>
 TO RUN A IMAGE IN DOCKER BY GIVING CONTAINER NAME: docker run --name <container_name> -p 8082:8082 <image_name>
-
-
 TO SEE ALL CONTAINERS IN DOCKER: docker ps -a
 TO SEE ALL RUNNING CONTAINERS IN DOCKER: docker ps
 TO DELETE CONTAINER IN DOCKER: docker rm <container_id>
 TO STOP A CONGTAINER IN DOCKER: docker stop <container_name_or_id>
-
 TO BUILD A COMPOSE FILE: docker-compose -f <file_name.yml> build
 TO RUN A COMPOSE FILE: docker-compose -f <file_name.yml> up
-
 TO CEATE A NETWORK IN DOCKER: docker network create <network-name>
 TO GET NETWORK LIST: docker network ls
 TO DELETE NETWORK :docker network rm  <network-name>
-
-
+__________________________________
 PUSHING DOCKER IMAGE ON DOCKER HUB
 __________________________________
 docker tag <IMAGE NAME ON LOCAL:TAG> <DOCKER USERNAME>/<IMAGE NAME TO BE GIVEN:TAG>
@@ -27,8 +37,39 @@ docker login
 <GIVE USER NAME AND PASSWORD>
 docker push <DOCKER USERNAME>/<IMAGE NAME GIVEN ABOVE:TAG>
 
+-> In Docker file we use EntryPoint and CMD eg:
+In Spring boot app:
+-------------------
+# ENTRYPOINT ensures Java always runs the jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
+# CMD can be used to pass optional JVM arguments
+CMD ["--server.port=8080"]
 
-if we want top build a seperate image of 1 microservice which is internally calling other microservive then we need both microservice to run on same network  by below command
+-> IN docker we can decease the size of image by following process
+   1- By using lighter base image of node or java
+   2- By doing multistage Build(Most imp)
+    eg: FROM node:18 AS build
+        WORKDIR /app
+        COPY . .
+        RUN npm install && npm run build
+        
+        FROM node:18-alpine
+        WORKDIR /app
+        COPY --from=build /app/dist .
+        CMD ["node", "app.js"]
+        Stage 1 (Build):       Stage 2 (Runtime):
+        +----------------+     +----------------+
+        | source code    |     | built app      |
+        | dev packages   | --> | node runtime   |
+        | build tools    |     |                |
+        | build output   |     | build output   |
+        +----------------+     +----------------+
+
+
+   3- By usinf dockerignore file to prevent the copy of node module or .git folder in final image
+
+
+-> if we want top build a seperate image of 1 microservice which is internally calling other microservive then we need both microservice to run on same network  by below command
 
 docker run -d --name <container_name_u_want_to_give> --network  <network_name> -p 8080:8080  <image_name>
 
@@ -42,10 +83,41 @@ API keys, feature flags	       ❌ No	        ✅ Yes	                 Spring re
 
 React API URL (in build)	   ✅ Yes	        ❌ No (unless dev)	     Needed during frontend npm run build
 
+_____________________________________________________________________________________________________________________________________________________________________________________
+
+KUBERNTES
+----------
+
+we use kuberbntes 
+-> For managing multiples instances of services
+-> For Scaling of Microservices(Horizontal and Vertical Scaling)
+-> For Auto healing of services i.e Restaring of failed docker containers
+-> load balancing
+-> Kuberbtes does not run Container directly beacuse some container are tightly coupled so they must run together and to add a layer of abstraction before containers
+-> Deploment vs Stateful set : Deployment is used in stateless application and manage pod without unique identities while stateful set is used in stateful appliaction where pods are managed by giving unique identities like in db,redis etc
 
 
-BUILD DOCKER IMAGE:  docker build -t <imagename u want to give> .
-TO RUN A IMAGE IMAGE IN DOCKER: docker run -p <8080>:<8080> <IMAGE_NAME>
-TO BUILD A COMPOSE FILE: docker-compose -f <file_name.yml> build
-TO RUN A COMPOSE FILE: docker-compose -f <file_name.yml> up
+
+Image: It is standalone wrapped  application that can run in different machines without much configuations
+CONTAINER: It is running instance of image
+POD: It is the smallest deployable unit of kuberbets , usually contains 1 conatiner but can have more than 1 container for that we need to configure deployment.yaml and service.yaml
+Node: These are the machines which runs the conatiner
+CLUSTER: It is the entire enviroment which consists of nodes
+
+
+> kubectl apply -f deployment.yaml (TO DEPLOY APPLICATION)
+> kubectl apply -f Service.yaml (TO EXPOSE APPLICATION)
+
+> kubectl get deployment -o wide (TO CHECK IF APPLICATION IS DEPLOYED)
+> kubectl get nodes -o wide (TO GET THE RUNNING NODES)
+> kubectl get services -o wide (LIST DOWN ALL RUNNING SERVICES)
+> kubectl get pods -o wide (TO CHECK THE RUNNING STATUS OF APPLICATION)
+
+> kubectl describe pod <pod-name>(GET DESCRIPTION OF POD)
+> kubectl logs <pod-name>(CHECK LOGS OF POD)
+> kubectl logs <pod-name> -c <container-name>(LOGS IN CASE OF MULTIPLE CONTAINER IN ONE POD)
+> kubectl delete pod <pod-name>(DELETE THE POD)
+> kubectl delete service <service-name> 
+
+
 
