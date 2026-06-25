@@ -118,6 +118,9 @@ CLUSTER: It is the entire enviroment which consists of nodes
 > kubectl logs <pod-name> -c <container-name>(LOGS IN CASE OF MULTIPLE CONTAINER IN ONE POD)
 > kubectl delete pod <pod-name>(DELETE THE POD)
 > kubectl delete service <service-name> 
+> kubectl config get-contexts ( shows all the clusters you could talk to, and which one is currently selected).
+> kubectl cluster-info (shows you the status of the currently selected cluster ,checking if it is actually online and responsive)
+> kubectl config use-context <cluster-name-here> (points kubectl to this cluster)
 
 
 
